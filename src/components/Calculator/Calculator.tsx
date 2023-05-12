@@ -1,4 +1,4 @@
-import {Button, Col, Layout, Row} from 'antd';
+import {Button, Col, Input, Layout, Row} from 'antd';
 
 export const Calculator = () => {
   const numberActions: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
@@ -11,6 +11,9 @@ export const Calculator = () => {
       margin: '0 auto',
     }}>
       <Layout.Content>
+        <Col span={24}>
+          <Input size={'large'} value={3} disabled />
+        </Col>
         <Row>
           <Col span={20}>
             <Row gutter={[8, 8]}>
