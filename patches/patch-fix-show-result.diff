@@ -1,0 +1,53 @@
+From 6512ce74d493ea59d373f46aa75f6d482337c680 Mon Sep 17 00:00:00 2001
+From: taraswww777 <taraswww777@mail.ru>
+Date: Sun, 14 May 2023 12:40:56 +0300
+Subject: [PATCH] fix show on change
+
+---
+ src/components/Calculator/Calculator.tsx | 15 +++++++++++----
+ 1 file changed, 11 insertions(+), 4 deletions(-)
+
+diff --git a/src/components/Calculator/Calculator.tsx b/src/components/Calculator/Calculator.tsx
+index 556e2f1..1a7f73f 100644
+--- a/src/components/Calculator/Calculator.tsx
++++ b/src/components/Calculator/Calculator.tsx
+@@ -1,4 +1,4 @@
+-import {Button, Col, Input, Layout, Row, Typography} from 'antd';
++import {Badge, Button, Col, Input, Layout, Row, Typography} from 'antd';
+ import {useState} from 'react';
+ import {isEmpty} from 'lodash';
+ 
+@@ -32,7 +32,7 @@ export const Calculator = () => {
+   const calc = () => {
+     const calcArr = [...historyList];
+     calcArr.pop();
+-    return  eval(calcArr.join(' ')) || 0;
++    return eval(calcArr.join(' ')) || 0;
+   }
+ 
+   return (
+@@ -42,12 +42,19 @@ export const Calculator = () => {
+     }}>
+       <Layout.Content>
+         <Row gutter={[0, 8]}>
+-          <Col span={24}>
++          <Col span={20}>
+             <Typography>
+               <p>
+                 {historyList.join(' ')}
+               </p>
+-              <p>{calc()}</p>
++            </Typography>
++          </Col>
++          <Col span={4}>
++            <Typography>
++              <Badge.Ribbon
++                color={'green'}
++                text={`= ${calc()}`}
++              />
+             </Typography>
+           </Col>
+           <Col span={24}>
+-- 
+2.37.2.windows.2
+
